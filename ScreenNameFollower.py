@@ -1,4 +1,7 @@
 import globals as gls
+
+#for following people based on their @'screen names'
+
 import csv
 from random import randint
 import time
