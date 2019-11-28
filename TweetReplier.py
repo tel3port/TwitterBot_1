@@ -24,3 +24,5 @@ for i in range(len(screen_name_list)):
     print("uncommenting the following line replies to everyone in the csv")
     #gls.api.update_status(f"@{screen_name_list[i]}  this is custom tweet" ,in_reply_to_status_id=tweet_id_list[i][:-1])
     time.sleep(randint(5, 60))
+
+# todo add functionality to send out  related images and gifs
