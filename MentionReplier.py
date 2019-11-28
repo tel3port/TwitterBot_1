@@ -1,5 +1,7 @@
 import tweepy
 import globals as gls
+import time
+from random import randint
 
 # to reply to everyone that mentions me
 
@@ -21,12 +23,31 @@ def save_last_seen_id(my_id, my_file):
     return
 
 
-mentions = gls.api.mentions_timeline()
+def mention_replier():
+    print("replying to custom mentions...")
+    last_seen_id = get_last_seen_id(VALUE_HOLDER_FILE)
 
-print(mentions[0].__dict__.keys())  # converts list into dict and extracts all the keys
+    mentions = gls.api.mentions_timeline(last_seen_id, tweet_mode='extended')
 
-print(mentions[0].text)
+    # print(mentions[0].__dict__.keys())  # converts list into dict and extracts all the keys
+    #
+    # print(mentions[0].text)
+    # 1163451084704079873 for testing
+    for single_mention in reversed(mentions):
+        print(f"{single_mention.id} - {single_mention.full_text}")
+        last_seen_id = single_mention.id
+        save_last_seen_id(last_seen_id, VALUE_HOLDER_FILE)
 
-for single_mention in mentions:
-    print(f"{single_mention.id} - {single_mention.text}")
+        gls.api.update_status("how are you today, @" + single_mention.user.screen_name + " #DogsMostWanted", single_mention.id)
+        time.sleep(randint(5, 55))
+
+    print("end of reply cycle")
+
+
+while True:
+    mention_replier()
+    time.sleep(randint(6, 44))
+
+
+
 
