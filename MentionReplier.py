@@ -38,7 +38,7 @@ def mention_replier():
         last_seen_id = single_mention.id
         save_last_seen_id(last_seen_id, VALUE_HOLDER_FILE)
 
-        gls.api.update_status("how are you today, @" + single_mention.user.screen_name + " #DogsMostWanted", single_mention.id)
+        gls.api.update_status("good day to you , @" + single_mention.user.screen_name + " #DogsMostWanted", single_mention.id)
         time.sleep(randint(5, 55))
 
     print("end of reply cycle")
