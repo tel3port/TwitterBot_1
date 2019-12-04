@@ -5,15 +5,16 @@ from random import randint
 
 # this is for dm-ing people that follow you
 
-# this loop gets a list of everyone i follow
+
 follower_id_list = []
 screen_name_list = []
 
 
+# this loop gets a list of everyone i follow
 def follower_extractor(screen_name):
     for single_follower in tweepy.Cursor(gls.api.followers, screen_name="GikSoundz").items():
 
-        # print(f"{single_follower.id} - {single_follower.screen_name}")
+        print(f"{single_follower.id} - {single_follower.screen_name}")
         screen_name_list.append(single_follower.screen_name)
         follower_id_list.append(single_follower.id)
 

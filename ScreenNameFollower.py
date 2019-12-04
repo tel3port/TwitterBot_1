@@ -23,5 +23,5 @@ def hashtag_tweet_reader(tweets_list):
 def twitter_user_follower(scrn_name_list):
     for single_screen_name in screen_name_list:
         print("uncommenting the following line follows everyone in the csv")
-        # gls.api.create_friendship(screen_name=single_screen_name)
+        gls.api.create_friendship(screen_name=single_screen_name)
         time.sleep(randint(5, 60))

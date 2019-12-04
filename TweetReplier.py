@@ -25,5 +25,5 @@ def tweet_reader(my_tweet_list_csv):
 def screen_name_follower(scrn_name_list, custom_tweet_list, twit_id_list):
     for i in range(len(screen_name_list)):
         print("uncommenting the following line replies to everyone in the csv")
-        gls.api.update_status(f"@{screen_name_list[i]}  this is custom tweet" ,in_reply_to_status_id=tweet_id_list[i][:-1])
+        gls.api.update_status(f"@{screen_name_list[i]}  this is custom tweet", in_reply_to_status_id=tweet_id_list[i][:-1])
         time.sleep(randint(5, 60))

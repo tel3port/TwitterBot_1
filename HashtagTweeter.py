@@ -25,5 +25,5 @@ def tweet_reader(tweet_list_csv):
 def tweet_sender(tweet_list, hash_tag):
     for single_tweet in tweets_list:
         print("uncommenting the following line sends out the tweets from the list")
-        # gls.api.update_status(single_tweet + "#DogsMostWanted")
+        gls.api.update_status(single_tweet + "#DogsMostWanted")
         time.sleep(randint(5, 60))
