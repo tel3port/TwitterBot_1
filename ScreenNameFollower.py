@@ -10,14 +10,14 @@ import time
 class ScreenNameFollower:
     def __init__(self):
         screen_name_list = []
-        firstLine = True
+        first_line = True
 
     def hashtag_tweet_reader(self, tweets_list, screen_name_list):
         with open("hashtag_tweets.csv", "r") as rdr:
             reader = csv.reader(rdr, delimiter=",")
             for single_row in reader:
-                if firstLine:  # this skips th first line
-                    firstLine = False
+                if first_line:  # this skips th first line
+                    first_line = False
                     continue  # used this way, the rest of the code from here is skipped in this loop
                 screen_name_list.append(single_row[0])
 
