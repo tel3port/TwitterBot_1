@@ -3,6 +3,9 @@ import TweetDownloader as td
 from DMer import *
 from MentionReplier import *
 from TweetReplier import *
+from HashtagTweeter import *
+from ScreenNameFollower import *
+
 
 # for putting everything together... somehow
 # todo use this file to make sure all the methods are working
@@ -71,59 +74,64 @@ custom_facts_list = [
     "Zombie spiders exist.",
     "Fake smiles can hurt you.",
     "Mars is run by robots.",
-    "Dead women can give birth."
-    "A parasite exists that destroys the tongue of a fish and replaces its tongue with its own body."
-    "Your fish is probably an impostor."
-    "France didn't stop executing people by guillotine until 1977."
-    "Dead women can give birth."
-    "A jellyfish's mouth is also its anus. "
-    "The size of your social circle is related to the size of your brain."
-    "Microscopic mites live on your face."
-    "You can't breathe and swallow at the same time"
-    "You've probably consumed dinosaur waste."
-    "Australia is larger in diameter than Pluto."
-    "Zombie spiders exist."
-    "It rains diamonds on Saturn and Jupiter."
-    "Alaska is the most Western and the most Eastern state in the U.S."
-    "In Welsh folklore, corgis transported fairies."
-    "Fake smiles can hurt you."
-    "Carrots were originally purple."
-    "Craving ice is a symptom of iron deficiency."
-    "An octopus has three hearts."
-    "Shakespeare invented the name Jessica."
-    "Vampire bats drink half their body weight in blood."
-    "Flamingos turn pink from eating shrimp."
-    "High heels were first designed for men."
-    "Mars is run by robots."
-    "There's a brewery in Japan that makes beer from elephant dung."
-    "A lizard squirts blood out of its eye as a defense."
-    "There's a mental phenomenon that causes you to see monsters in mirrors."
+    "Dead women can give birth.",
+    "A parasite exists that destroys the tongue of a fish and replaces its tongue with its own body.",
+    "Your fish is probably an impostor.",
+    "France didn't stop executing people by guillotine until 1977.",
+    "Dead women can give birth.",
+    "A jellyfish's mouth is also its anus. ",
+    "The size of your social circle is related to the size of your brain.",
+    "Microscopic mites live on your face.",
+    "You can't breathe and swallow at the same time",
+    "You've probably consumed dinosaur waste.",
+    "Australia is larger in diameter than Pluto.",
+    "Zombie spiders exist.",
+    "It rains diamonds on Saturn and Jupiter.",
+    "Alaska is the most Western and the most Eastern state in the U.S.",
+    "In Welsh folklore, corgis transported fairies.",
+    "Fake smiles can hurt you.",
+    "Carrots were originally purple.",
+    "Craving ice is a symptom of iron deficiency.",
+    "An octopus has three hearts.",
+    "Shakespeare invented the name Jessica.",
+    "Vampire bats drink half their body weight in blood.",
+    "Flamingos turn pink from eating shrimp.",
+    "High heels were first designed for men.",
+    "Mars is run by robots.",
+    "There's a brewery in Japan that makes beer from elephant dung.",
+    "A lizard squirts blood out of its eye as a defense.",
+    "There's a mental phenomenon that causes you to see monsters in mirrors.",
     "A chicken can live with its head (mostly) chopped off."
 ]
 
 # download all tweets from given hashtag and and from said data
-# twitDl_1 = td.TwitDloader(hash_tag='FridayMotivation', count_num=1500, language='en', from_date='2019-12-05')
-# twitDl_1.tweet_list_downloader()
-# print("DONE with tweet extraction")
+twitDl_1 = td.TwitDloader(hash_tag='FridayMotivation', count_num=1500, language='en', from_date='2019-12-05')
+twitDl_1.tweet_list_downloader()
+print("DONE with tweet extraction")
 
 
 # send these direct messages to everyone that follows the screen name
+dm_1 = DMSlider(follower_id_list=[], screen_name_list=[], screen_name="GikSoundz", custom_msg_list=custom_msg_list)
+dm_1.follower_extractor()
+dm_1.follower_looper()
 
 
-# dm_1 = DMSlider(follower_id_list=[], screen_name_list=[], screen_name="GikSoundz", custom_msg_list=custom_msg_list)
-#
-# dm_1.follower_extractor()
-#
-# dm_1.follower_looper()
-
-
-# mention_replier_1 = MentionsRepr(value_holder_file='last_seen_id.txt', hash_tag='#FridayMotivation', custom_message_list=custom_joke_list)
-#
-# mention_replier_1.custom_replier()
-#
-# mention_replier_1.shoot_them_up()
+mention_replier_1 = MentionsRepr(value_holder_file='last_seen_id.txt', hash_tag='#FridayMotivation', custom_message_list=custom_joke_list)
+mention_replier_1.custom_replier()
+mention_replier_1.shoot_them_up()
 
 # replies to everyone in the csv
-# twt_replier = TwitReplier(screen_name_list=[], tweet_id_list=[], custom_tweet_list=custom_facts_list)
-# twt_replier.tweet_reader()
-# twt_replier.screen_name_follower()
+twt_replier = TwitReplier(screen_name_list=[], tweet_id_list=[], custom_tweet_list=custom_facts_list)
+twt_replier.tweet_reader()
+twt_replier.screen_name_follower()
+
+
+# tweet on a given hashtag
+hashtag_twtr = TwitOnHashTag(tweet_list_csv="tweets_for_today.csv", action="r", tweets_list=[], hashtag="#CashAppChillFriday")
+hashtag_twtr.tweet_reader()
+hashtag_twtr.tweet_sender()
+
+# follow everyone with the provided handle
+handle_follower = HandleFollower(screen_name_list=[], tweets_list_csv="hashtag_tweets.csv", action="r")
+handle_follower.hashtag_tweet_reader()
+handle_follower.twitter_user_follower()

@@ -30,9 +30,6 @@ class TwitReplier:
             print("problem reading the file")
         finally:
             pass
-        print(self.tweet_id_list)
-        print(self.custom_tweet_list)
-        print(self.screen_name_list)
 
     def screen_name_follower(self):
         try:
