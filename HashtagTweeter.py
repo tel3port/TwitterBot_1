@@ -29,6 +29,6 @@ class HashtagTweeter:
 
     def tweet_sender(self):
         for single_tweet in self.tweets_list:
-            print("uncommenting the following line sends out the tweets from the list")
+            # the following line sends out the tweets from the list
             gls.api.update_status(single_tweet + "#DogsMostWanted")
             time.sleep(randint(5, 60))

@@ -15,15 +15,26 @@ class DMer:
 
     # this loop gets a list of everyone i follow
     def follower_extractor(self):
-        for single_follower in tweepy.Cursor(gls.api.followers, screen_name="GikSoundz").items():
-            print(f"{single_follower.id} - {single_follower.screen_name}")
-            self.screen_name_list.append(single_follower.screen_name)
-            self.follower_id_list.append(single_follower.id)
+        try:
+            for single_follower in tweepy.Cursor(gls.api.followers, screen_name="GikSoundz").items():
+                print(f"{single_follower.id} - {single_follower.screen_name}")
+                self.screen_name_list.append(single_follower.screen_name)
+                self.follower_id_list.append(single_follower.id)
 
-            time.sleep(randint(1, 65))
+                time.sleep(randint(1, 65))
+        except tweepy.TweepError as e:
+            print("problem downloading follower list ", e.reason)
+        finally:
+            pass
 
     def follower_looper(self):
-        # this loop sends dms to everyone I follow
-        for i in range(len(self.follower_id_list)):
-            gls.api.send_direct_message(self.follower_id_list[i], f'Custom message {self.screen_name_list[i]} Cheers!')
-            time.sleep(randint(9, 34))
+        try:
+            # this loop sends dms to everyone I follow
+            for i in range(len(self.follower_id_list)):
+                gls.api.send_direct_message(self.follower_id_list[i], f'i appreciate the follow {self.screen_name_list[i]} :)!')
+                time.sleep(randint(9, 34))
+        except tweepy.TweepError as e:
+            print("problem messaging follower list ", e.reason)
+        finally:
+            pass
+
