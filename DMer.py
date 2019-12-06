@@ -27,6 +27,9 @@ class DMer:
         finally:
             pass
 
+        print(self.follower_id_list)
+        print(self.screen_name_list)
+
     def follower_looper(self):
         try:
             # this loop sends dms to everyone I follow
