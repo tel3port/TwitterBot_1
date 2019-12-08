@@ -32,14 +32,13 @@ class TwitReplier:
             pass
 
     def screen_name_follower(self):
+        self.tweet_reader()
+
+        print("the following replies to everyone in the csv")
         try:
             for i in range(len(self.screen_name_list)):
-                print("uncommenting the following line replies to everyone in the csv")
                 gls.api.update_status(f"@{self.screen_name_list[i]}  {self.custom_tweet_list[randint(0, len(self.custom_tweet_list) - 1)]}", in_reply_to_status_id=self.tweet_id_list[i][:-1])
                 time.sleep(randint(5, 60))
-
-                if i == 5:
-                    break
 
         except tweepy.TweepError as e:
             print("problem sending tweets ", e.reason)

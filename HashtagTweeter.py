@@ -33,11 +33,12 @@ class TwitOnHashTag:
         print(self.tweets_list)
 
     def tweet_sender(self):
+        self.tweet_reader()
         count = 0
         try:
             for single_tweet in self.tweets_list:
                 # the following line sends out the tweets from the list
-                gls.api.update_status(single_tweet + self.hashtag)
+                gls.api.update_status(f'{single_tweet} {self.hashtag}')
                 time.sleep(randint(5, 60))
 
         except tweepy.TweepError as e:

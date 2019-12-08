@@ -32,35 +32,29 @@ except IOError:
 finally:
     pass
 
+# replies to everyone in the csv
+twt_replier = TwitReplier(screen_name_list=[], tweet_id_list=[], custom_tweet_list=custom_facts_list)
+twt_replier.screen_name_follower()
+
+# send these direct messages to everyone that follows the screen name
+dm_1 = DMSlider(follower_id_list=[], screen_name_list=[], screen_name="GikSoundz", custom_msg_list=custom_thnx_list)
+dm_1.follower_looper()
+
+# reply to all mentions and adds the given hashtag
+mention_replier_1 = MentionsRepr(value_holder_file='last_seen_id.txt', hash_tag='#FridayMotivation', custom_message_list=custom_joke_list)
+mention_replier_1.shoot_them_up()
+
 # download all tweets from given hashtag and and from said data
 twitDl_1 = td.TwitDloader(hash_tag='FridayMotivation', count_num=1500, language='en', from_date='2019-12-05')
 twitDl_1.tweet_list_downloader()
 print("DONE with tweet extraction")
 
-# replies to everyone in the csv
-twt_replier = TwitReplier(screen_name_list=[], tweet_id_list=[], custom_tweet_list=custom_facts_list)
-twt_replier.tweet_reader()
-twt_replier.screen_name_follower()
-
 # follow everyone with the provided handle
 handle_follower = HandleFollower(screen_name_list=[], tweets_list_csv="hashtag_tweets.csv", action="r")
-handle_follower.hashtag_tweet_reader()
 handle_follower.twitter_user_follower()
-
-
-# send these direct messages to everyone that follows the screen name
-dm_1 = DMSlider(follower_id_list=[], screen_name_list=[], screen_name="GikSoundz", custom_msg_list=custom_thnx_list)
-dm_1.follower_extractor()
-dm_1.follower_looper()
-
-# reply to all mentions and adds the given hashtag
-mention_replier_1 = MentionsRepr(value_holder_file='last_seen_id.txt', hash_tag='#FridayMotivation', custom_message_list=custom_joke_list)
-mention_replier_1.custom_replier()
-mention_replier_1.shoot_them_up()
-
 
 # tweet on a given hashtag
 hashtag_twtr = TwitOnHashTag(tweet_list_csv="tweets_for_today.csv", action="r", tweets_list=[], hashtag="#CashAppChillFriday")
-hashtag_twtr.tweet_reader()
 hashtag_twtr.tweet_sender()
+
 

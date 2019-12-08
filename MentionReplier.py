@@ -34,12 +34,10 @@ class MentionsRepr:
             last_seen_id = get_last_seen_id(self.value_holder_file)
 
             mentions = gls.api.mentions_timeline(last_seen_id, tweet_mode='extended')
-
             # print(mentions[0].__dict__.keys())  # converts list into dict and extracts all the keys
             #
             # print(mentions[0].text)
             # 1163451084704079873 for testing
-
             for single_mention in reversed(mentions):
                 print(f"{single_mention.id} - {single_mention.full_text}")
                 last_seen_id = single_mention.id
@@ -49,7 +47,6 @@ class MentionsRepr:
                     f'{self.hash_tag} {self.custom_message_list[randint(0, len(self.custom_message_list) - 1)]}, @"{single_mention.user.screen_name}',
                     single_mention.id)
                 time.sleep(randint(5, 55))
-
 
             print("end of reply cycle")
 

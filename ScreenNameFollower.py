@@ -36,6 +36,8 @@ class HandleFollower:
         print(self.screen_name_list)
 
     def twitter_user_follower(self):
+        self.hashtag_tweet_reader()
+
         count = 0
         try:
             for single_screen_name in self.screen_name_list:
