@@ -65,15 +65,16 @@ while 1:
     mention_replier_1.custom_replier()
     hashtag_twtr.tweet_sender()
 
-    # clear the lists  and hashtag.csv, wait a while and start the loop again
-    custom_facts_list.clear()
-    custom_joke_list.clear()
-    custom_thnx_list.clear()
 
-    f = open(gls.hashtag_tweet_csv, "w+")
-    f.truncate()
-    f.close()
-    time.sleep(randint(153, 600))
+    # clear the lists  and hashtag.csv, wait a while and start the loop again
+    # custom_facts_list.clear()
+    # custom_joke_list.clear()
+    # custom_thnx_list.clear()
+    #
+    # f = open(gls.hashtag_tweet_csv, "w+")
+    # f.truncate()
+    # f.close()
+    # time.sleep(randint(153, 600))
 
     loop_num += 1
 

@@ -54,3 +54,6 @@ class TwitOnHashTag:
             print("problem tweeting out ", e.reason)
         finally:
             pass
+
+        print("follower_looper() has terminated after 5 iterations and deletions ")
+        return len(self.tweets_list)

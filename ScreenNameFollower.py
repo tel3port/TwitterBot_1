@@ -65,3 +65,4 @@ class HandleFollower:
             pass
 
         print("twitter_user_follower() has terminated after 5 iterations and deletions ")
+        return len(self.screen_name_list)
