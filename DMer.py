@@ -31,7 +31,6 @@ class DMSlider:
         print(self.screen_name_list)
 
     def follower_looper(self):
-        self.follower_extractor()
         try:
             # this loop sends dms to everyone I follow
             for i in range(len(self.follower_id_list)):

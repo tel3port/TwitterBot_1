@@ -33,7 +33,6 @@ class TwitOnHashTag:
         print(self.tweets_list)
 
     def tweet_sender(self):
-        self.tweet_reader()
         count = 0
         try:
             for single_tweet in self.tweets_list:

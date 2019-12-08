@@ -9,15 +9,17 @@ class TwitReplier:
 
     # this is to reply to all the tweets from a given hashtag from csv of downloaded tweets
 
-    def __init__(self, screen_name_list, tweet_id_list, custom_tweet_list):
+    def __init__(self, screen_name_list, tweet_id_list, custom_tweet_list, hashtag_tweet_csv, action):
         self.screen_name_list = screen_name_list
         self.tweet_id_list = tweet_id_list
         self.custom_tweet_list = custom_tweet_list
+        self.hashtag_tweet_csv = hashtag_tweet_csv
+        self. action = action
 
     def tweet_reader(self):
         first_line = True
         try:
-            with open("hashtag_tweets.csv", "r") as rdr:
+            with open(self.hashtag_tweet_csv, self.action) as rdr:
                 reader = csv.reader(rdr, delimiter=",")
                 for single_row in reader:
                     if first_line:  # this skips th first line
@@ -32,7 +34,6 @@ class TwitReplier:
             pass
 
     def screen_name_follower(self):
-        self.tweet_reader()
 
         print("the following replies to everyone in the csv")
         try:

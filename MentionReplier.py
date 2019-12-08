@@ -46,7 +46,7 @@ class MentionsRepr:
                 gls.api.update_status(
                     f'{self.hash_tag} {self.custom_message_list[randint(0, len(self.custom_message_list) - 1)]}, @"{single_mention.user.screen_name}',
                     single_mention.id)
-                time.sleep(randint(5, 55))
+                time.sleep(randint(15, 155))
 
             print("end of reply cycle")
 
@@ -55,6 +55,4 @@ class MentionsRepr:
         finally:
             pass
 
-    def shoot_them_up(self):
-        self.custom_replier()
-        time.sleep(randint(6, 44))
+

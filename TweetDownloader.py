@@ -6,16 +6,17 @@ import time
 
 
 class TwitDloader:
-    def __init__(self, hash_tag, count_num, language, from_date):
+    def __init__(self, hash_tag, count_num, language, from_date,hashtag_tweet_csv, action):
         self.hash_tag = hash_tag
         self.count_num = count_num
         self.language = language
         self.from_date = from_date
+        self.hashtag_tweet_csv = hashtag_tweet_csv
+        self.action = action
 
     def tweet_list_downloader(self):
-        global csv_writer
         try:
-            tweets_csv = open("hashtag_tweets.csv", 'a')
+            tweets_csv = open(self.hashtag_tweet_csv, self.action)
             csv_writer = csv.writer(tweets_csv)
 
             for single_tweet in tweepy.Cursor(gls.api.search, q=self.hash_tag, count=self.count_num, lang=self.language,
