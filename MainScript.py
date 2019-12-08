@@ -20,7 +20,7 @@ while 1:
     # open csv and populate above lists
     first_line = True
     try:
-        with open("tweets.csv", "r") as rdr:
+        with open(gls.tweets, "r") as rdr:
             reader = csv.reader(rdr, delimiter=",")
             for single_row in reader:
                 if first_line:  # this skips th first line
@@ -35,17 +35,17 @@ while 1:
         pass
 
     # download all tweets from given hashtag and and from said data
-    twitDl_1 = td.TwitDloader(hash_tag='FridayMotivation', count_num=1500, language='en', from_date='2019-12-05', hashtag_tweet_csv ="hashtag_tweets.csv", action="a")
+    twitDl_1 = td.TwitDloader(hash_tag='FridayMotivation', count_num=1500, language='en', from_date='2019-12-05', hashtag_tweet_csv =gls.hashtag_tweet_csv, action="a")
     twitDl_1.tweet_list_downloader()
     print("DONE with tweet extraction")
 
     # follow everyone with the provided handle
-    handle_follower = HandleFollower(screen_name_list=[], tweets_list_csv="hashtag_tweets.csv", action="r")
+    handle_follower = HandleFollower(screen_name_list=[], tweets_list_csv=gls.hashtag_tweet_csv, action="r")
     handle_follower.hashtag_tweet_reader()
     handle_follower.twitter_user_follower()
 
     # replies to everyone in the csv
-    twt_replier = TwitReplier(screen_name_list=[], tweet_id_list=[], custom_tweet_list=custom_facts_list, hashtag_tweet_csv="hashtag_tweets.csv", action="r")
+    twt_replier = TwitReplier(screen_name_list=[], tweet_id_list=[], custom_tweet_list=custom_facts_list, hashtag_tweet_csv=gls.hashtag_tweet_csv, action="r")
     twt_replier.tweet_reader()
     twt_replier.screen_name_follower()
 
@@ -59,7 +59,7 @@ while 1:
     mention_replier_1.custom_replier()
 
     # tweet on a given hashtag
-    hashtag_twtr = TwitOnHashTag(tweet_list_csv="tweets_for_today.csv", action="r", tweets_list=[], hashtag="#CashAppChillFriday")
+    hashtag_twtr = TwitOnHashTag(tweet_list_csv=gls.tweets_for_today, action="r", tweets_list=[], hashtag="#CashAppChillFriday")
     hashtag_twtr.tweet_reader()
     hashtag_twtr.tweet_sender()
 
@@ -68,7 +68,7 @@ while 1:
     custom_joke_list.clear()
     custom_thnx_list.clear()
 
-    f = open("hashtag_tweets.csv", "w+")
+    f = open(gls.hashtag_tweet_csv, "w+")
     f.truncate()
     f.close()
     time.sleep(randint(153, 600))
