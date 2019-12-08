@@ -30,6 +30,7 @@ class TwitDloader:
                 csv_writer.writerow(
                     [single_tweet.author.screen_name, single_tweet.created_at, str(single_tweet.id_str) + "x",
                      single_tweet.text.encode('utf-8')])
+                print("row (hopefully )written")
 
         except IOError:
             print("problem opening the said csv file")

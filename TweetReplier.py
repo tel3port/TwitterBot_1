@@ -33,8 +33,8 @@ class TwitReplier:
         finally:
             pass
 
-        print("len of handle list: ", len(self.screen_name_list))
-        print("len of twit id list: ", len(self.tweet_id_list))
+        print("len of (TwitReplier) handle list: ", len(self.screen_name_list))
+        print("len of (TwitReplier) twit id list: ", len(self.tweet_id_list))
 
     def screen_name_follower(self):
 
@@ -44,7 +44,25 @@ class TwitReplier:
                 gls.api.update_status(f"@{self.screen_name_list[i]}  {self.custom_tweet_list[randint(0, len(self.custom_tweet_list) - 1)]}", in_reply_to_status_id=self.tweet_id_list[i][:-1])
                 time.sleep(randint(5, 60))
 
+                t = randint(12, 654)
+                time.sleep(t)
+
+                print(f"thread just slept for {t} seconds...")
+                del (self.screen_name_list[i])
+                del (self.custom_tweet_list[i])
+
+                print(f'index - {i} len - {len(self.screen_name_list)}')
+
+                if i == 5 or len(self.screen_name_list) < 5:
+                    break
+
         except tweepy.TweepError as e:
             print("problem sending tweets ", e.reason)
+
+        except Exception as e:
+            print("the problem is: ", e)
+
         finally:
             pass
+
+        print("screen_name_follower() has terminated after 5 iterations and deletions ")

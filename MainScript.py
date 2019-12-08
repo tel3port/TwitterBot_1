@@ -35,7 +35,7 @@ while 1:
         pass
 
     # download all tweets from given hashtag and and from said data
-    twitDl_1 = td.TwitDloader(hash_tag='ChristmasChaos', count_num=1500, language='en', from_date='2019-12-05', hashtag_tweet_csv =gls.hashtag_tweet_csv, action="a")
+    twitDl_1 = td.TwitDloader(hash_tag='StrayKidsComeback', count_num=1500, language='en', from_date='2019-12-01', hashtag_tweet_csv =gls.hashtag_tweet_csv, action="a")
     twitDl_1.tweet_list_downloader()
     print("DONE with tweet extraction")
 
@@ -43,26 +43,26 @@ while 1:
     handle_follower = HandleFollower(screen_name_list=[], tweets_list_csv=gls.hashtag_tweet_csv, action="r")
     handle_follower.hashtag_tweet_reader()
 
-    # # replies to everyone in the csv
-    # twt_replier = TwitReplier(screen_name_list=[], tweet_id_list=[], custom_tweet_list=custom_facts_list, hashtag_tweet_csv=gls.hashtag_tweet_csv, action="r")
-    # twt_replier.tweet_reader()
-    #
-    # # send these direct messages to everyone that follows the screen name
-    # dm_1 = DMSlider(follower_id_list=[], screen_name_list=[], screen_name="GikSoundz", custom_msg_list=custom_thnx_list)
-    # dm_1.follower_extractor()
-    #
-    # # reply to all mentions and adds the given hashtag
-    # mention_replier_1 = MentionsRepr(value_holder_file=gls.value_holder_file, hash_tag='#mondaythoughts', custom_message_list=custom_joke_list)
-    #
-    # # tweet on a given hashtag
-    # hashtag_twtr = TwitOnHashTag(tweet_list_csv=gls.tweets_for_today, action="r", tweets_list=[], hashtag="#glastonbury")
-    # hashtag_twtr.tweet_reader()
+    # replies to everyone in the csv
+    twt_replier = TwitReplier(screen_name_list=[], tweet_id_list=[], custom_tweet_list=custom_facts_list, hashtag_tweet_csv=gls.hashtag_tweet_csv, action="r")
+    twt_replier.tweet_reader()
+
+    # send these direct messages to everyone that follows the screen name
+    dm_1 = DMSlider(follower_id_list=[], screen_name_list=[], screen_name="GikSoundz", custom_msg_list=custom_thnx_list)
+    dm_1.follower_extractor()
+
+    # reply to all mentions and adds the given hashtag
+    mention_replier_1 = MentionsRepr(value_holder_file=gls.value_holder_file, hash_tag='#mondaythoughts', custom_message_list=custom_joke_list)
+
+    # tweet on a given hashtag
+    hashtag_twtr = TwitOnHashTag(tweet_list_csv=gls.tweets_for_today, action="r", tweets_list=[], hashtag="#glastonbury")
+    hashtag_twtr.tweet_reader()
 
     handle_follower.twitter_user_follower()
-    # twt_replier.screen_name_follower()
-    # dm_1.follower_looper()
-    # mention_replier_1.custom_replier()
-    # hashtag_twtr.tweet_sender()
+    twt_replier.screen_name_follower()
+    dm_1.follower_looper()
+    mention_replier_1.custom_replier()
+    hashtag_twtr.tweet_sender()
 
     # clear the lists  and hashtag.csv, wait a while and start the loop again
     custom_facts_list.clear()
@@ -73,3 +73,5 @@ while 1:
     f.truncate()
     f.close()
     time.sleep(randint(153, 600))
+
+

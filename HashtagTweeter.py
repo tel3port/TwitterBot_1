@@ -39,6 +39,17 @@ class TwitOnHashTag:
                 gls.api.update_status(f'{self.tweets_list[i]} {self.hashtag}')
                 time.sleep(randint(5, 60))
 
+                t = randint(12, 654)
+                time.sleep(t)
+
+                print(f"thread just slept for {t} seconds...")
+                del (self.tweets_list[i])
+
+                print(f'index - {i} len - {len(self.tweets_list)}')
+
+                if i == 5 or len(self.tweets_list) < 5:
+                    break
+
         except tweepy.TweepError as e:
             print("problem tweeting out ", e.reason)
         finally:

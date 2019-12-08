@@ -38,7 +38,24 @@ class DMSlider:
                                             f'{self.custom_msg_list[randint(0, len(self.custom_msg_list) - 1)]} {self.screen_name_list[i]} :)!')
                 time.sleep(randint(9, 34))
 
+                t = randint(12, 654)
+                time.sleep(t)
+
+                print(f"thread just slept for {t} seconds...")
+                del (self.screen_name_list[i])
+                del (self.follower_id_list[i])
+
+                print(f'index - {i} len - {len(self.screen_name_list)}')
+
+                if i == 5 or len(self.screen_name_list) < 5:
+                    break
+
         except tweepy.TweepError as e:
             print("problem messaging follower list ", e.reason)
+        except Exception as e:
+            print("the problem is: ", e)
+
         finally:
             pass
+
+        print("follower_looper() has terminated after 5 iterations and deletions ")

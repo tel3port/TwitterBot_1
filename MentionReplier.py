@@ -38,6 +38,8 @@ class MentionsRepr:
             #
             # print(mentions[0].text)
             # 1163451084704079873 for testing
+
+            i = 0
             for single_mention in reversed(mentions):
                 print(f"{single_mention.id} - {single_mention.full_text}")
                 last_seen_id = single_mention.id
@@ -48,11 +50,28 @@ class MentionsRepr:
                     single_mention.id)
                 time.sleep(randint(15, 155))
 
+                i += 1
+
+                t = randint(12, 654)
+                time.sleep(t)
+
+                print(f"thread just slept for {t} seconds...")
+                del (self.custom_message_list[i])
+
+                print(f'index - {i} len - {len(self.custom_message_list)}')
+
+                if i == 5 or len(self.custom_message_list) < 5:
+                    break
+
             print("end of reply cycle")
 
         except tweepy.TweepError as e:
             print("problem replying to mentions ", e.reason)
+        except Exception as e:
+            print("the problem is: ", e)
+
         finally:
             pass
 
+        print("custom_replier() has terminated after 5 iterations and deletions ")
 
