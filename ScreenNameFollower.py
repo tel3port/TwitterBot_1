@@ -41,7 +41,7 @@ class HandleFollower:
         try:
             for index in range(len(self.screen_name_list)):
                 gls.api.create_friendship(screen_name=self.screen_name_list[index])
-                time.sleep(randint(5, 60))
+                time.sleep(randint(15, 600))
 
                 del (self.screen_name_list[index])
 
@@ -56,3 +56,5 @@ class HandleFollower:
 
         finally:
             pass
+
+        print("twitter_user_follower() has terminated after 5 iterations and deletions ")
