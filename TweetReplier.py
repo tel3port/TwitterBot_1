@@ -33,6 +33,9 @@ class TwitReplier:
         finally:
             pass
 
+        print("len of handle list: ", len(self.screen_name_list))
+        print("len of twit id list: ", len(self.tweet_id_list))
+
     def screen_name_follower(self):
 
         print("the following replies to everyone in the csv")

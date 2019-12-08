@@ -27,8 +27,8 @@ class DMSlider:
         finally:
             pass
 
-        print(self.follower_id_list)
-        print(self.screen_name_list)
+        print("len of follower id list ", len(self.follower_id_list))
+        print("len of handle list ", len(self.screen_name_list))
 
     def follower_looper(self):
         try:

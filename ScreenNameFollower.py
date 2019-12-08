@@ -33,18 +33,26 @@ class HandleFollower:
         finally:
             pass
 
-        print(self.screen_name_list)
+        print("len of handle list: ", len(self.screen_name_list))
 
     def twitter_user_follower(self):
+        print("uncommenting the following line follows everyone in the csv")
 
-        count = 0
         try:
-            for single_screen_name in self.screen_name_list:
-                print("uncommenting the following line follows everyone in the csv")
-                gls.api.create_friendship(screen_name=single_screen_name)
+            for index in range(len(self.screen_name_list)):
+                gls.api.create_friendship(screen_name=self.screen_name_list[index])
                 time.sleep(randint(5, 60))
+
+                del (self.screen_name_list[index])
+
+                if index == 5:
+                    break
 
         except tweepy.TweepError as e:
             print("problem messaging follower list ", e.reason)
+
+        except Exception as e:
+            print("the problem is: ", e)
+
         finally:
             pass
