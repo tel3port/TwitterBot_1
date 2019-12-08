@@ -40,12 +40,19 @@ class HandleFollower:
 
         try:
             for index in range(len(self.screen_name_list)):
-                gls.api.create_friendship(screen_name=self.screen_name_list[index])
-                time.sleep(randint(15, 600))
+                print(f"creating friendship with: {self.screen_name_list[index]}")
 
+                gls.api.create_friendship(screen_name=self.screen_name_list[index])
+
+                t = randint(15, 600)
+                time.sleep(t)
+
+                print(f"thread just slept for {t} seconds...")
                 del (self.screen_name_list[index])
 
-                if index == 5:
+                print(f'index - {index} len - {len(self.screen_name_list)}')
+
+                if index == 5 or len(self.screen_name_list) < 5:
                     break
 
         except tweepy.TweepError as e:

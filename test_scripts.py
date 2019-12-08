@@ -1,4 +1,11 @@
+import time
+from random import randint
 print("uncommenting the following line follows everyone in the csv")
+
+t = randint(5, 60)
+time.sleep(t)
+
+print(f'sleeping time {t}')
 
 test_list = sorted(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"])
 

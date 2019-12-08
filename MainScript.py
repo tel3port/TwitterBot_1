@@ -35,7 +35,7 @@ while 1:
         pass
 
     # download all tweets from given hashtag and and from said data
-    twitDl_1 = td.TwitDloader(hash_tag='glastonbury', count_num=1500, language='en', from_date='2019-12-05', hashtag_tweet_csv =gls.hashtag_tweet_csv, action="a")
+    twitDl_1 = td.TwitDloader(hash_tag='ChristmasChaos', count_num=1500, language='en', from_date='2019-12-05', hashtag_tweet_csv =gls.hashtag_tweet_csv, action="a")
     twitDl_1.tweet_list_downloader()
     print("DONE with tweet extraction")
 

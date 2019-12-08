@@ -24,7 +24,7 @@ class TwitDloader:
                 print(single_tweet.id_str)
                 single_tweet.favorite()
                 single_tweet.retweet()  # retweets and favs then waits for a few seconds before going on with iteration
-                time.sleep(randint(5, 55))
+                time.sleep(randint(25, 75))
                 print(single_tweet.author, single_tweet.created_at, single_tweet.text)
 
                 csv_writer.writerow(
