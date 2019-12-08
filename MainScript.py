@@ -12,6 +12,7 @@ import time
 # todo put everything together in this file
 # todo finally deploy on two twitter accounts
 
+loop_num = 0
 while 1:
     custom_joke_list = []
     custom_thnx_list = []
@@ -35,7 +36,7 @@ while 1:
         pass
 
     # download all tweets from given hashtag and and from said data
-    twitDl_1 = td.TwitDloader(hash_tag='StrayKidsComeback', count_num=1500, language='en', from_date='2019-12-01', hashtag_tweet_csv =gls.hashtag_tweet_csv, action="a")
+    twitDl_1 = td.TwitDloader(hash_tag='TheUnwrittenTwitterRules', count_num=1500, language='en', from_date='2019-12-01', hashtag_tweet_csv =gls.hashtag_tweet_csv, action="a")
     twitDl_1.tweet_list_downloader()
     print("DONE with tweet extraction")
 
@@ -55,7 +56,7 @@ while 1:
     mention_replier_1 = MentionsRepr(value_holder_file=gls.value_holder_file, hash_tag='#mondaythoughts', custom_message_list=custom_joke_list)
 
     # tweet on a given hashtag
-    hashtag_twtr = TwitOnHashTag(tweet_list_csv=gls.tweets_for_today, action="r", tweets_list=[], hashtag="#glastonbury")
+    hashtag_twtr = TwitOnHashTag(tweet_list_csv=gls.tweets_for_today, action="r", tweets_list=[], hashtag="#BoreMeIn4Words")
     hashtag_twtr.tweet_reader()
 
     handle_follower.twitter_user_follower()
@@ -74,4 +75,10 @@ while 1:
     f.close()
     time.sleep(randint(153, 600))
 
+    loop_num += 1
+
+    if loop_num == 3:
+        break
+
+print("finished. Remove the break statement and deploy NOW!")
 
