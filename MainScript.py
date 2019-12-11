@@ -8,7 +8,10 @@ from ScreenNameFollower import *
 import time
 
 # for putting everything together... somehow
-# todo LOAD UP THE CSVs AND THE TWITTER LIST
+# todo LOAD UP THE CSVs AND THE hashtag LIST
+# todo run the code till it breaks out of the loops
+# todo remove all the print statements and the short circuit
+# todo uncomment th code at the end of this page
 # todo finally deploy on two twitter accounts
 
 loop_num = 0

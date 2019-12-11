@@ -1,7 +1,7 @@
 import tweepy
 import globals as gls
 import csv
-
+import logging
 
 class TwitOnHashTag:
     # tweeting on a given hashtag
@@ -13,6 +13,8 @@ class TwitOnHashTag:
         self.hashtag = hashtag
 
     def tweet_reader(self):
+        gls.log_file_writer()
+
         first_line = True
         try:
             with open(self.tweets_list_csv, self.action) as rdr:
@@ -22,8 +24,8 @@ class TwitOnHashTag:
                         first_line = False
                         continue  # used this way, the rest of the code from here is skipped in this loop
                     self.tweets_list.append(single_row[0])
-        except IOError:
-            print("problem reading the csv")
+        except IOError as e:
+            logging.error('Error occurred ' + str(e))
 
         finally:
             pass
@@ -31,6 +33,8 @@ class TwitOnHashTag:
         print("len of tweet list ", len(self.tweets_list))
 
     def tweet_sender(self):
+        gls.log_file_writer()
+
         try:
             for i in range(len(self.tweets_list)):
                 # the following line sends out the tweets from the list
@@ -46,7 +50,8 @@ class TwitOnHashTag:
                     break
 
         except tweepy.TweepError as e:
-            print("problem tweeting out ", e.reason)
+            logging.error('Error occurred ' + str(e))
+
         finally:
             pass
 

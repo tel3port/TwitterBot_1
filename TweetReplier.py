@@ -2,6 +2,7 @@ import tweepy
 import globals as gls
 import csv
 from random import randint
+import logging
 
 
 class TwitReplier:
@@ -16,6 +17,8 @@ class TwitReplier:
         self. action = action
 
     def tweet_reader(self):
+        gls.log_file_writer()
+
         first_line = True
         try:
             with open(self.hashtag_tweet_csv, self.action) as rdr:
@@ -27,8 +30,9 @@ class TwitReplier:
                     self.screen_name_list.append(single_row[0])
                     self.tweet_id_list.append(single_row[2])
 
-        except IOError:
-            print("problem reading the file")
+        except IOError as e:
+            logging.error('Error occurred ' + str(e))
+
         finally:
             pass
 
@@ -36,6 +40,7 @@ class TwitReplier:
         print("len of (TwitReplier) twit id list: ", len(self.tweet_id_list))
 
     def screen_name_follower(self):
+        gls.log_file_writer()
 
         print("the following replies to everyone in the csv")
         try:
@@ -52,10 +57,10 @@ class TwitReplier:
                     break
 
         except tweepy.TweepError as e:
-            print("problem sending tweets ", e.reason)
+            logging.error('Error occurred ' + str(e))
 
         except Exception as e:
-            print("the problem is: ", e)
+            logging.error('Error occurred ' + str(e))
 
         finally:
             pass

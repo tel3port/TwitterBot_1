@@ -1,6 +1,7 @@
 import globals as gls
 import csv
 import tweepy
+import logging
 
 # for following people based on their @'screen names'
 
@@ -13,6 +14,8 @@ class HandleFollower:
         self.action = action
 
     def hashtag_tweet_reader(self):
+        gls.log_file_writer()
+
         first_line = True
 
         try:
@@ -25,8 +28,8 @@ class HandleFollower:
                         continue  # used this way, the rest of the code from here is skipped in this loop
                     self.screen_name_list.append(single_row[0])
 
-        except IOError:
-            print("problem opening or reading the csv")
+        except IOError as e:
+            logging.error('Error occurred ' + str(e))
 
         finally:
             pass
@@ -34,6 +37,8 @@ class HandleFollower:
         print("len of handle list: ", len(self.screen_name_list))
 
     def twitter_user_follower(self):
+        gls.log_file_writer()
+
         print("uncommenting the following line follows everyone in the csv")
 
         try:
@@ -52,10 +57,10 @@ class HandleFollower:
                     break
 
         except tweepy.TweepError as e:
-            print("problem messaging follower list ", e.reason)
+            logging.error('Error occurred ' + str(e))
 
         except Exception as e:
-            print("the problem is: ", e)
+            logging.error('Error occurred ' + str(e))
 
         finally:
             pass

@@ -1,6 +1,7 @@
 import tweepy
 import csv
 import globals as gls
+import logging
 
 
 class TwitDloader:
@@ -13,6 +14,8 @@ class TwitDloader:
         self.action = action
 
     def tweet_list_downloader(self):
+        gls.log_file_writer()
+
         try:
             tweets_csv = open(self.hashtag_tweet_csv, self.action)
             csv_writer = csv.writer(tweets_csv)
@@ -31,14 +34,14 @@ class TwitDloader:
                      single_tweet.text.encode('utf-8')])
                 print("row (hopefully )written")
 
-        except IOError:
-            print("problem opening the said csv file")
+        except IOError as e:
+            logging.error('Error occurred ' + str(e))
 
         except tweepy.TweepError as e:
-            print("error downloading the tweets", e.reason)
+            logging.error('Error occurred ' + str(e))
 
         except Exception as x:
-            print("something or the other went wrong", x.args)
+            logging.error('Error occurred ' + str(x))
 
         finally:
             print("end of tweet extraction")

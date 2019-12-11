@@ -1,7 +1,7 @@
 import tweepy
 import globals as gls
 from random import randint
-
+import logging
 
 # to reply to everyone that mentions me
 
@@ -28,6 +28,8 @@ class MentionsRepr:
         # VALUE_HOLDER_FILE = 'last_seen_id.txt'
 
     def custom_replier(self):
+        gls.log_file_writer()
+
         try:
             print("replying to custom mentions...")
             last_seen_id = get_last_seen_id(self.value_holder_file)
@@ -61,9 +63,10 @@ class MentionsRepr:
             print("end of reply cycle")
 
         except tweepy.TweepError as e:
-            print("problem replying to mentions ", e.reason)
+            logging.error('Error occurred ' + str(e))
+
         except Exception as e:
-            print("the problem is: ", e)
+            logging.error('Error occurred ' + str(e))
 
         finally:
             pass

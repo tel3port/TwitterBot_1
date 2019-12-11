@@ -1,6 +1,7 @@
 import tweepy
 from random import randint
 import time
+import logging
 
 hashtag_tweet_csv = "hashtag_tweets.csv"
 tweets_for_today = "tweets_for_today.csv"
@@ -28,7 +29,7 @@ def random_hashtag():
     random_index = randint(0, len(hashtag_list))
     print(random_index)
 
-    return hashtag_list[random_index-1]
+    return hashtag_list[random_index]
 
 
 def random_date():
@@ -54,4 +55,11 @@ def sleep_time():
     print(f"thread just slept for {time} seconds...")
 
     return t
+
+
+def log_file_writer():
+    return logging.basicConfig(filename='twitter_log_error_logs.log', format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
+    datefmt='%Y-%m-%d:%H:%M:%S',
+    level=logging.DEBUG)
+
 

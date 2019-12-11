@@ -1,6 +1,7 @@
 import globals as gls
 import tweepy
 from random import randint
+import logging
 
 
 # this is for dm-ing people that follow you
@@ -14,6 +15,7 @@ class DMSlider:
 
     # this loop gets a list of everyone i follow
     def follower_extractor(self):
+        gls.log_file_writer()
         try:
             for single_follower in tweepy.Cursor(gls.api.followers, screen_name=self.screen_name).items():
                 print(f"{single_follower.id} - {single_follower.screen_name}")
@@ -23,7 +25,8 @@ class DMSlider:
                 gls.sleep_time()
 
         except tweepy.TweepError as e:
-            print("problem downloading follower list ", e.reason)
+            logging.error('Error occurred ' + str(e))
+
         finally:
             pass
 
@@ -31,6 +34,7 @@ class DMSlider:
         print("len of handle list ", len(self.screen_name_list))
 
     def follower_looper(self):
+        gls.log_file_writer()
         try:
             # this loop sends dms to everyone I follow
             for i in range(len(self.follower_id_list)):
@@ -48,9 +52,10 @@ class DMSlider:
                     break
 
         except tweepy.TweepError as e:
-            print("problem messaging follower list ", e.reason)
+            logging.error('Error occurred ' + str(e))
+
         except Exception as e:
-            print("the problem is: ", e)
+            logging.error('Error occurred ' + str(e))
 
         finally:
             pass

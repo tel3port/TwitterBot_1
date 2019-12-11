@@ -2,6 +2,7 @@ import time
 from random import randint
 import TestClass as tc
 import globals as gls
+import logging
 
 print("this  module is for testing out scripts and methods and stuff")
 
@@ -13,9 +14,16 @@ obj1 = tc.ThrowAwayClass(age_list=age_list, country_list=None, gender_list=None)
 
 obj1.print_info()
 
-obj1.print_random_num(random_hashtag=gls.random_hashtag())
 
-t = randint(1, 6)
+gls.log_file_writer()
+try:
+    obj1.print_random_num(random_hashtag=gls.random_hashtag())
+except Exception as e:
+    print("error is ", e)
+    logging.error('Error occurred ' + str(e))
+
+
+t = randint(1, 3)
 time.sleep(t)
 
 print(f'sleeping time {t}')
