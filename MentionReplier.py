@@ -1,6 +1,5 @@
 import tweepy
 import globals as gls
-import time
 from random import randint
 
 
@@ -48,14 +47,10 @@ class MentionsRepr:
                 gls.api.update_status(
                     f'{self.hash_tag} {self.custom_message_list[randint(0, len(self.custom_message_list) - 1)]}, @"{single_mention.user.screen_name}',
                     single_mention.id)
-                time.sleep(randint(15, 155))
-
                 i += 1
 
-                t = randint(12, 654)
-                time.sleep(t)
+                time_slept = gls.sleep_time()
 
-                print(f"thread just slept for {t} seconds...")
                 del (self.custom_message_list[i])
 
                 print(f'index - {i} len - {len(self.custom_message_list)}')

@@ -7,9 +7,8 @@ from HashtagTweeter import *
 from ScreenNameFollower import *
 import time
 
-
 # for putting everything together... somehow
-# todo put everything together in this file
+# todo LOAD UP THE CSVs AND THE TWITTER LIST
 # todo finally deploy on two twitter accounts
 
 loop_num = 0
@@ -21,7 +20,7 @@ while 1:
     # open csv and populate above lists
     first_line = True
     try:
-        with open(gls.tweets, "r") as rdr:
+        with open(gls.tweets, gls.write) as rdr:
             reader = csv.reader(rdr, delimiter=",")
             for single_row in reader:
                 if first_line:  # this skips th first line
@@ -36,16 +35,16 @@ while 1:
         pass
 
     # download all tweets from given hashtag and and from said data
-    twitDl_1 = td.TwitDloader(hash_tag='TheUnwrittenTwitterRules', count_num=1500, language='en', from_date='2019-12-01', hashtag_tweet_csv =gls.hashtag_tweet_csv, action="a")
+    twitDl_1 = td.TwitDloader(hash_tag=gls.random_hashtag(), count_num=1500, language='en', from_date=gls.random_date(), hashtag_tweet_csv =gls.hashtag_tweet_csv, action="a")
     twitDl_1.tweet_list_downloader()
     print("DONE with tweet extraction")
 
     # follow everyone with the provided handle
-    handle_follower = HandleFollower(screen_name_list=[], tweets_list_csv=gls.hashtag_tweet_csv, action="r")
+    handle_follower = HandleFollower(screen_name_list=[], tweets_list_csv=gls.hashtag_tweet_csv, action=gls.write)
     handle_follower.hashtag_tweet_reader()
 
     # replies to everyone in the csv
-    twt_replier = TwitReplier(screen_name_list=[], tweet_id_list=[], custom_tweet_list=custom_facts_list, hashtag_tweet_csv=gls.hashtag_tweet_csv, action="r")
+    twt_replier = TwitReplier(screen_name_list=[], tweet_id_list=[], custom_tweet_list=custom_facts_list, hashtag_tweet_csv=gls.hashtag_tweet_csv, action=gls.write)
     twt_replier.tweet_reader()
 
     # send these direct messages to everyone that follows the screen name
@@ -53,18 +52,21 @@ while 1:
     dm_1.follower_extractor()
 
     # reply to all mentions and adds the given hashtag
-    mention_replier_1 = MentionsRepr(value_holder_file=gls.value_holder_file, hash_tag='#mondaythoughts', custom_message_list=custom_joke_list)
+    mention_replier_1 = MentionsRepr(value_holder_file=gls.value_holder_file, hash_tag=gls.random_hashtag(), custom_message_list=custom_joke_list)
 
     # tweet on a given hashtag
-    hashtag_twtr = TwitOnHashTag(tweet_list_csv=gls.tweets_for_today, action="r", tweets_list=[], hashtag="#BoreMeIn4Words")
+    hashtag_twtr = TwitOnHashTag(tweet_list_csv=gls.tweets_for_today, action=gls.write, tweets_list=[], hashtag=gls.random_hashtag())
     hashtag_twtr.tweet_reader()
 
-    handle_follower.twitter_user_follower()
-    twt_replier.screen_name_follower()
-    dm_1.follower_looper()
-    mention_replier_1.custom_replier()
-    hashtag_twtr.tweet_sender()
+    while 1:
+        current_handle_num = handle_follower.twitter_user_follower()
+        current_screen_name_num = twt_replier.screen_name_follower()
+        current_follower_num = dm_1.follower_looper()
+        mention_replier_1.custom_replier()
+        current_tweet_num = hashtag_twtr.tweet_sender()
 
+        if current_handle_num <= 3:
+            break
 
     # clear the lists  and hashtag.csv, wait a while and start the loop again
     # custom_facts_list.clear()
@@ -74,12 +76,11 @@ while 1:
     # f = open(gls.hashtag_tweet_csv, "w+")
     # f.truncate()
     # f.close()
-    # time.sleep(randint(153, 600))
+    # gls.sleep_time()
 
     loop_num += 1
-
     if loop_num == 3:
         break
 
-print("finished. Remove the break statement and deploy NOW!")
+print("finished. Remove the above statement, uncomment and deploy")
 

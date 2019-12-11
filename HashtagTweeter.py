@@ -1,7 +1,5 @@
 import tweepy
 import globals as gls
-import time
-from random import randint
 import csv
 
 
@@ -37,12 +35,9 @@ class TwitOnHashTag:
             for i in range(len(self.tweets_list)):
                 # the following line sends out the tweets from the list
                 gls.api.update_status(f'{self.tweets_list[i]} {self.hashtag}')
-                time.sleep(randint(5, 60))
 
-                t = randint(12, 654)
-                time.sleep(t)
+                time_slept = gls.sleep_time()
 
-                print(f"thread just slept for {t} seconds...")
                 del (self.tweets_list[i])
 
                 print(f'index - {i} len - {len(self.tweets_list)}')

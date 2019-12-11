@@ -1,5 +1,4 @@
 import globals as gls
-import time
 import tweepy
 from random import randint
 
@@ -21,7 +20,8 @@ class DMSlider:
                 self.screen_name_list.append(single_follower.screen_name)
                 self.follower_id_list.append(single_follower.id)
 
-                time.sleep(randint(1, 65))
+                gls.sleep_time()
+
         except tweepy.TweepError as e:
             print("problem downloading follower list ", e.reason)
         finally:
@@ -36,12 +36,9 @@ class DMSlider:
             for i in range(len(self.follower_id_list)):
                 gls.api.send_direct_message(self.follower_id_list[i],
                                             f'{self.custom_msg_list[randint(0, len(self.custom_msg_list) - 1)]} {self.screen_name_list[i]} :)!')
-                time.sleep(randint(9, 34))
 
-                t = randint(12, 654)
-                time.sleep(t)
+                gls.sleep_time()
 
-                print(f"thread just slept for {t} seconds...")
                 del (self.screen_name_list[i])
                 del (self.follower_id_list[i])
 

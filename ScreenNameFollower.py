@@ -1,7 +1,5 @@
 import globals as gls
 import csv
-from random import randint
-import time
 import tweepy
 
 # for following people based on their @'screen names'
@@ -44,10 +42,8 @@ class HandleFollower:
 
                 gls.api.create_friendship(screen_name=self.screen_name_list[index])
 
-                t = randint(15, 600)
-                time.sleep(t)
+                time_slept = gls.sleep_time()
 
-                print(f"thread just slept for {t} seconds...")
                 del (self.screen_name_list[index])
 
                 print(f'index - {index} len - {len(self.screen_name_list)}')

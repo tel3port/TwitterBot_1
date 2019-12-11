@@ -1,7 +1,6 @@
 import tweepy
 import globals as gls
 import csv
-import time
 from random import randint
 
 
@@ -42,12 +41,8 @@ class TwitReplier:
         try:
             for i in range(len(self.screen_name_list)):
                 gls.api.update_status(f"@{self.screen_name_list[i]}  {self.custom_tweet_list[randint(0, len(self.custom_tweet_list) - 1)]}", in_reply_to_status_id=self.tweet_id_list[i][:-1])
-                time.sleep(randint(5, 60))
+                time_slept = gls.sleep_time()
 
-                t = randint(12, 654)
-                time.sleep(t)
-
-                print(f"thread just slept for {t} seconds...")
                 del (self.screen_name_list[i])
                 del (self.custom_tweet_list[i])
 

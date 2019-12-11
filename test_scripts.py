@@ -1,14 +1,19 @@
 import time
 from random import randint
 import TestClass as tc
+import globals as gls
 
 print("this  module is for testing out scripts and methods and stuff")
+
+
 
 age_list = sorted(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t"])
 
 obj1 = tc.ThrowAwayClass(age_list=age_list, country_list=None, gender_list=None)
 
 obj1.print_info()
+
+obj1.print_random_num(random_hashtag=gls.random_hashtag())
 
 t = randint(1, 6)
 time.sleep(t)

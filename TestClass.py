@@ -5,6 +5,10 @@ class ThrowAwayClass:
         self.country_list, = country_list,
         self.gender_list, = gender_list,
 
+    def print_random_num(self, random_hashtag):
+        print("random hashtag== ",random_hashtag)
+        pass
+
     def print_info(self):
 
         try:
