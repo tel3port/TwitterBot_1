@@ -34,6 +34,15 @@ while 1:
                 col_1 = single_row[1]
                 col_2 = single_row[2]
 
+                if "." in single_row[0]:
+                    col_0 = single_row[0].split(".")[1]
+
+                if "." in single_row[1]:
+                    col_1 = single_row[1].split(".")[1]
+
+                if "." in single_row[2]:
+                    col_2 = single_row[2].split(".")[1]
+
                 if len(col_0) < 15:
                     col_0 = "https://freebie-heaven.weebly.com/"
 

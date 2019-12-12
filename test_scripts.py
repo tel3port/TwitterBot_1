@@ -6,6 +6,7 @@ import logging
 import csv
 
 print("this  module is for testing out scripts and methods and stuff")
+
 custom_joke_list = []
 custom_thnx_list = []
 custom_facts_list = []
@@ -23,6 +24,15 @@ try:
             col_0 = single_row[0]
             col_1 = single_row[1]
             col_2 = single_row[2]
+
+            if "." in single_row[0]:
+                col_0 = single_row[0].split(".")[1]
+
+            if "." in single_row[1]:
+                col_1 = single_row[1].split(".")[1]
+
+            if "." in single_row[2]:
+                col_2 = single_row[2].split(".")[1]
 
             if len(col_0) < 15:
                 col_0 = "https://freebie-heaven.weebly.com/"
@@ -43,8 +53,11 @@ finally:
     print(f'thanx list length: {len(custom_thnx_list)}')
     print(f'facts list length: {len(custom_facts_list)}')
 
+    for single_joke in custom_joke_list:
+        print(single_joke)
 
-print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+
+# print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
 # age_list = sorted(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t"])
 #
