@@ -10,7 +10,7 @@ import time
 # for putting everything together... somehow
 # todo LOAD UP THE CSVs AND THE hashtag LIST
 # todo run the code till it breaks out of the loops
-# todo remove all the print statements and the short circuit
+# todo the short circuit
 # todo uncomment th code at the end of this page
 # todo finally deploy on two twitter accounts
 
@@ -29,6 +29,20 @@ while 1:
                 if first_line:  # this skips th first line
                     first_line = False
                     continue  # used this way, the rest of the code from here is skipped in this loop
+
+                col_0 = single_row[0]
+                col_1 = single_row[1]
+                col_2 = single_row[2]
+
+                if len(col_0) < 15:
+                    col_0 = "https://freebie-heaven.weebly.com/"
+
+                if len(col_1) < 15:
+                    col_1 = "https://freebie-heaven.weebly.com/"
+
+                if len(col_2) < 15:
+                    col_2 = "https://freebie-heaven.weebly.com/"
+
                 custom_joke_list.append(single_row[0])
                 custom_thnx_list.append(single_row[1])
                 custom_facts_list.append(single_row[2])

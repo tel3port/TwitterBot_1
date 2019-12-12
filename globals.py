@@ -19,9 +19,10 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
+
 # todo load up the hashtag list 50 for NZ
 def random_hashtag():
-    hashtag_list = ["a",
+    hashtag_list = ["#mondaymotivation",
                     "c",
                     "v",
                     "g"]
@@ -29,7 +30,7 @@ def random_hashtag():
     random_index = randint(0, len(hashtag_list))
     print(random_index)
 
-    return hashtag_list[random_index]
+    return hashtag_list[random_index-1]
 
 
 def random_date():
@@ -40,13 +41,30 @@ def random_date():
                  '2019-12-01',
                  '2019-05-06',
                  '2019-09-03',
-                 '2019-08-07'
+                 '2019-08-07',
+                 '2019-12-01',
+                 '2019-11-16',
+                 '2019-10-23',
+                 '2019-07-12',
+                 '2019-12-21',
+                 '2019-05-07',
+                 '2019-09-23',
+                 '2019-08-17'
                  ]
 
-    random_index = randint(0, len(date_list))
+    random_index = randint(0, len(date_list)-1)
+
+    return date_list[random_index]
+
+
+def random_default_msg():
+    msg_list = [""
+                 ]
+
+    random_index = randint(0, len(msg_list)-1)
     print(random_index)
 
-    return date_list[random_index-1]
+    return msg_list[random_index]
 
 
 def sleep_time():
@@ -58,8 +76,7 @@ def sleep_time():
 
 
 def log_file_writer():
-    return logging.basicConfig(filename='twitter_log_error_logs.log', format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
-    datefmt='%Y-%m-%d:%H:%M:%S',
-    level=logging.DEBUG)
-
-
+    return logging.basicConfig(filename='twitter_log_error_logs.log',
+                               format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
+                               datefmt='%Y-%m-%d:%H:%M:%S',
+                               level=logging.DEBUG)

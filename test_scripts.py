@@ -3,33 +3,73 @@ from random import randint
 import TestClass as tc
 import globals as gls
 import logging
+import csv
 
 print("this  module is for testing out scripts and methods and stuff")
+custom_joke_list = []
+custom_thnx_list = []
+custom_facts_list = []
 
-
-
-age_list = sorted(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t"])
-
-obj1 = tc.ThrowAwayClass(age_list=age_list, country_list=None, gender_list=None)
-
-obj1.print_info()
-
-
-gls.log_file_writer()
+# open csv and populate above lists
+first_line = True
 try:
-    obj1.print_random_num(random_hashtag=gls.random_hashtag())
-except Exception as e:
-    print("error is ", e)
-    logging.error('Error occurred ' + str(e))
+    with open(gls.tweets, gls.write) as rdr:
+        reader = csv.reader(rdr, delimiter=",")
+        for single_row in reader:
+            if first_line:  # this skips th first line
+                first_line = False
+                continue  # used this way, the rest of the code from here is skipped in this loop
+
+            col_0 = single_row[0]
+            col_1 = single_row[1]
+            col_2 = single_row[2]
+
+            if len(col_0) < 15:
+                col_0 = "https://freebie-heaven.weebly.com/"
+
+            if len(col_1) < 15:
+                col_1 = "https://freebie-heaven.weebly.com/"
+
+            if len(col_2) < 15:
+                col_2 = "https://freebie-heaven.weebly.com/"
+
+            custom_joke_list.append(col_0)
+            custom_thnx_list.append(col_1)
+            custom_facts_list.append(col_2)
+except IOError:
+    print("problem reading the csv")
+finally:
+    print(f'jokes list length: {len(custom_joke_list)}')
+    print(f'thanx list length: {len(custom_thnx_list)}')
+    print(f'facts list length: {len(custom_facts_list)}')
 
 
-t = randint(1, 3)
-time.sleep(t)
+print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
-print(f'sleeping time {t}')
-print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-obj1.print_info()
-
+# age_list = sorted(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t"])
+#
+# obj1 = tc.ThrowAwayClass(age_list=age_list, country_list=None, gender_list=None)
+#
+# obj1.print_info()
+#
+#
+# gls.log_file_writer()
+# try:
+#     obj1.print_random_num(random_hashtag=gls.random_hashtag())
+# except Exception as e:
+#     print("error is ", e)
+#     logging.error('Error occurred ' + str(e))
+#
+#
+# t = randint(1, 3)
+# time.sleep(t)
+#
+# print(f'sleeping time {t}')
+# print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+# obj1.print_info()
+#
+#
+#
 
 # test_list = sorted(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t"])
 
