@@ -20,12 +20,13 @@ class TwitDloader:
             tweets_csv = open(self.hashtag_tweet_csv, self.action)
             csv_writer = csv.writer(tweets_csv)
 
-            for single_tweet in tweepy.Cursor(gls.api.search, q=self.hash_tag, count=self.count_num, lang=self.language,
-                                              since=self.from_date).items():
+            for single_tweet in tweepy.Cursor(gls.api.search, q=self.hash_tag, rpp=self.count_num, lang=self.language,
+                                              since=self.from_date).items(1000):
                 print(single_tweet.id_str)
                 single_tweet.favorite()
                 single_tweet.retweet()  # retweets and favs then waits for a few seconds before going on with iteration
-                time_slept = gls.sleep_time()
+
+                #time_slept = gls.sleep_time()
 
                 print(single_tweet.author, single_tweet.created_at, single_tweet.text)
 

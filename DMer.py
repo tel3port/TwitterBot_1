@@ -34,6 +34,8 @@ class DMSlider:
         print("len of handle list ", len(self.screen_name_list))
 
     def follower_looper(self):
+        print("starting follower_looper()")
+
         gls.log_file_writer()
         try:
             # this loop sends dms to everyone I follow
@@ -48,7 +50,7 @@ class DMSlider:
 
                 print(f'index - {i} len - {len(self.screen_name_list)}')
 
-                if i == 5 or len(self.screen_name_list) < 5:
+                if i == gls.random_num or len(self.screen_name_list) < gls.random_num:
                     break
 
         except tweepy.TweepError as e:

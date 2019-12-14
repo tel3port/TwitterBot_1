@@ -40,12 +40,13 @@ class TwitReplier:
         print("len of (TwitReplier) twit id list: ", len(self.tweet_id_list))
 
     def screen_name_follower(self):
+        print("starting screen_name_follower()")
+
         gls.log_file_writer()
 
-        print("the following replies to everyone in the csv")
         try:
             for i in range(len(self.screen_name_list)):
-                gls.api.update_status(f"@{self.screen_name_list[i]}  {self.custom_tweet_list[randint(0, len(self.custom_tweet_list) - 1)]}", in_reply_to_status_id=self.tweet_id_list[i][:-1])
+                gls.api.update_status(status=f"@{self.screen_name_list[i]}  {self.custom_tweet_list[randint(0, len(self.custom_tweet_list) - 1)]}", in_reply_to_status_id=self.tweet_id_list[i][:-1])
                 time_slept = gls.sleep_time()
 
                 del (self.screen_name_list[i])
@@ -53,7 +54,7 @@ class TwitReplier:
 
                 print(f'index - {i} len - {len(self.screen_name_list)}')
 
-                if i == 5 or len(self.screen_name_list) < 5:
+                if i == gls.random_num or len(self.screen_name_list) < gls.random_num:
                     break
 
         except tweepy.TweepError as e:
@@ -67,4 +68,3 @@ class TwitReplier:
 
         print("screen_name_follower() has terminated after 5 iterations and deletions ")
         return len(self.screen_name_list)
-

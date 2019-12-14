@@ -5,6 +5,7 @@ import logging
 
 # to reply to everyone that mentions me
 
+
 def save_last_seen_id(my_id, my_file):
     f_write = open(my_file, 'w')
     f_write.write(str(my_id))
@@ -42,12 +43,12 @@ class MentionsRepr:
 
             i = 0
             for single_mention in reversed(mentions):
-                print(f"{single_mention.id} - {single_mention.full_text}")
+                print(f"mention id {single_mention.id} - mention full text {single_mention.full_text}")
                 last_seen_id = single_mention.id
                 save_last_seen_id(last_seen_id, self.value_holder_file)
 
                 gls.api.update_status(
-                    f'{self.hash_tag} {self.custom_message_list[randint(0, len(self.custom_message_list) - 1)]}, @"{single_mention.user.screen_name}',
+                    f'{gls.random_hashtag()} {self.custom_message_list[randint(0, len(self.custom_message_list) - 1)]}, @{single_mention.user.screen_name}',
                     single_mention.id)
                 i += 1
 
@@ -57,7 +58,7 @@ class MentionsRepr:
 
                 print(f'index - {i} len - {len(self.custom_message_list)}')
 
-                if i == 5 or len(self.custom_message_list) < 5:
+                if i == gls.random_num or len(self.custom_message_list) < gls.random_num:
                     break
 
             print("end of reply cycle")

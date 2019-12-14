@@ -37,10 +37,9 @@ class HandleFollower:
         print("len of handle list: ", len(self.screen_name_list))
 
     def twitter_user_follower(self):
+        print("starting twitter_user_follower()")
+
         gls.log_file_writer()
-
-        print("uncommenting the following line follows everyone in the csv")
-
         try:
             for index in range(len(self.screen_name_list)):
                 print(f"creating friendship with: {self.screen_name_list[index]}")
@@ -53,7 +52,7 @@ class HandleFollower:
 
                 print(f'index - {index} len - {len(self.screen_name_list)}')
 
-                if index == 5 or len(self.screen_name_list) < 5:
+                if index == gls.random_num or len(self.screen_name_list) < gls.random_num:
                     break
 
         except tweepy.TweepError as e:

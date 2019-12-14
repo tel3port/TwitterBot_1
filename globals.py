@@ -20,57 +20,203 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 
+random_num = randint(1, 5)
+
+# def batch_delete(api):
+#     print(
+#         "You are about to Delete all tweets from the account @%s." % api.verify_credentials().screen_name)
+#
+#     for status in tweepy.Cursor(api.user_timeline).items():
+#         try:
+#             api.destroy_status(status.id)
+#             print
+#             "Deleted:", status.id
+#         except:
+#             print
+#             "Failed to delete:", status.id
+#
+#
+# if __name__ == "__main__":
+#     "Authenticated as: %s" % api.me().screen_name
+#
+#     batch_delete(api)
+#
+#
+# batch_delete(api)
 # todo load up the hashtag list 50 for NZ
 def random_hashtag():
     hashtag_list = ["#mondaymotivation",
-                    "c",
-                    "v",
-                    "g"]
+                    "#newzealand",
+                    "#nz",
+                    "#travel",
+                    "#ShortlandStreet",
+                    "#NZBFC630",
+                    "#LISTEN",
+                    "#Breaking",
+                    "#StandUpWithYourNix",
+                    "#nzpol",
+                    "#cricketnation",
+                    "#superrugby",
+                    "#ClimateChange",
+                    "#nzqt",
+                    "#mafsau",
+                    "#LiteraryFiction",
+                    "#TheBlockNZ",
+                    "#dunedin",
+                    "#COYS",
+                    "#ClimateAction",
+                    "#ISPSHandaPrem",
+                    "#Mitre10Cup",
+                    "#Brexit",
+                    "#edchatnz",
+                    "#CreateHistory",
+                    "#BlackCaps",
+                    "#WATCH",
+                    "#bitcoin",
+                    "#eNovAaW",
+                    "#lfsanzcod",
+                    "#Christchurch",
+                    "#bksupersmash",
+                    "#innovation",
+                    "#RWC2019",
+                    "#BACKBLACK",
+                    "#CWC19",
+                    "#wellington",
+                    "#DWTSNZ",
+                    "#amwriting",
+                    "#BACKTHEBLACKCAPS",
+                    "#eqnz",
+                    "#VASC",
+                    "#CWC2019",
+                    "#parttimePM",
+                    "#ClimateCrisis",
+                    "#mentalhealth",
+                    "#AllBlacks",
+                    "#nationnz",
+                    "#TheOrville",
+                    "#gamedev",
+                    "#FootballFerns",
+                    "#trump",
+                    "#NZwine",
+                    "#STEMeducation",
+                    "#Cricket",
+                    "#WWESuperCard",
+                    "#Unity4J",
+                    "#FreeAssange",
+                    "#PlunketShield",
+                    "#auspol",
+                    "#science",
+                    "#PokemonGO",
+                    "#Auckland",
+                    "#ClimateStrike",
+                    "#Australia",
+                    "#GameOfThrones",
+                    "#HudsonValley",
+                    "#BB13",
+                    "#GOT7",
+                    "#NZvENG",
+                    "#COYN",
+                    "#MeToo",
+                    "#ClimateEmergency",
+                    "#MAFSNZ",
+                    "#Fortnite",
+                    "#leadership",
+                    "#crypto",
+                    "#NZvIND",
+                    "#forthefern",
+                    "#srilanka",
+                    "#joytrain",
+                    "#starwars",
+                    "#MakeOilHistory",
+                    "#Photography",
+                    "#SurvivorAU",
+                    "#Ashes",
+                    "#writingcommunity",
+                    "#WeAreWarriors",
+                    "#NZvBAN",
+                    "#Twitch",
+                    "#SecretSantaNZ2019",
+                    "#BirdOfTheYear",
+                    "#ChathamCup",
+                    "#NBAPlayoffs",
+                    "#BiggBoss13",
+                    "#rugbyworldcup",
+                    "#rwc19",
+                    "#vaping",
+                    "#nzfgc",
+                    "#CriticalRole",
+                    "#Supernatural",
+                    "#LOVETHESTAGS",
+                    "#kiwi"
+                    ]
 
-    random_index = randint(0, len(hashtag_list))
-    print(random_index)
-
-    return hashtag_list[random_index-1]
+    hashtag_list = ["#FreebieFriday", "#MondayMorning","#interesting"]
+    random_index = randint(0, len(hashtag_list)-1)
+    return hashtag_list[random_index]
 
 
 def random_date():
-    date_list = ['2019-12-01',
-                 '2019-11-06',
-                 '2019-10-03',
-                 '2019-07-02',
-                 '2019-12-01',
-                 '2019-05-06',
-                 '2019-09-03',
-                 '2019-08-07',
-                 '2019-12-01',
-                 '2019-11-16',
-                 '2019-10-23',
-                 '2019-07-12',
-                 '2019-12-21',
-                 '2019-05-07',
-                 '2019-09-23',
-                 '2019-08-17'
+    date_list = ['2017-12-01',
+                 '2017-11-06',
+                 '2017-10-03',
+                 '2017-07-02',
+                 '2017-12-01',
+                 '2017-05-06',
+                 '2017-09-03',
+                 '2017-08-07',
+                 '2017-12-01',
+                 '2017-11-16',
+                 '2017-10-23',
+                 '2017-07-12',
+                 '2017-12-21',
+                 '2017-05-07',
+                 '2017-09-23',
+                 '2017-08-17'
                  ]
 
-    random_index = randint(0, len(date_list)-1)
+    random_index = randint(0, len(date_list) - 1)
 
     return date_list[random_index]
 
 
 def random_default_msg():
-    msg_list = [""
-                 ]
+    msg_list = ["hi! we a re running a small contest. Can you win? https://win-150-dollars-now.weebly.com/",
+                "would you like to participate in a contest to win some money for the holidays? https://win-a-fortune-today.weebly.com/",
+                "hi! This is a small contest for our twitter users. Can you win? https://win-150-dollars-now.weebly.com/",
+                "We are giving away some cash to our twitter users. Do you want in? https://win-a-fortune-today.weebly.com/",
+                "hi! we a re running a small contest. Are you interested? https://win-150-dollars-now.weebly.com/",
+                "would you like to participate in a contest to win some money for the holidays? https://win-a-fortune-today.weebly.com/",
+                "A this contest our fall prize pool https://win-150-dollars-now.weebly.com/",
+                "play this contest our fall prize pool  https://win-a-fortune-today.weebly.com/",
+                "Play this game now now. Get 50% off.  https://win-a-fortune-today.weebly.com/",
+                "THis is for our best twitter users  https://win-a-fortune-today.weebly.com/",
+                "life is short! Act now  https://win-a-fortune-today.weebly.com/",
+                "Apply to this contest and Save today  https://win-a-fortune-today.weebly.com/",
+                "Hellow? Looking for 123 winners. Yes! I want one.  https://win-a-fortune-today.weebly.com/",
+                "Order now  https://win-a-fortune-today.weebly.com/",
+                "Repeat your order  https://win-a-fortune-today.weebly.com/",
+                "Claim your coupon  https://win-a-fortune-today.weebly.com/",
+                "follow and Reveal my mystery coupon  https://win-a-fortune-today.weebly.com/",
+                "Start saving today  https://win-150-dollars-now.weebly.com/",
+                "Don’t delay. Save now.  https://win-150-dollars-now.weebly.com/",
+                "See your hand-selected deals  https://win-150-dollars-now.weebly.com/",
+                "Apply and 50% off now  https://win-150-dollars-now.weebly.com/",
+                "Play for the clothes you want  https://win-150-dollars-now.weebly.com/",
+                "Get the style you want  https://win-150-dollars-now.weebly.com/",
+                "Get your winter wardrobe  https://win-150-dollars-now.weebly.com/",
+                "Get free shipping  https://win-150-dollars-now.weebly.com/",
+                "Free gift with purchase  https://win-150-dollars-now.weebly.com/"]
 
-    random_index = randint(0, len(msg_list)-1)
-    print(random_index)
+    random_index = randint(0, len(msg_list) - 1)
 
     return msg_list[random_index]
 
 
 def sleep_time():
-    t = randint(23, 769)
+    t = randint(15, 120)
+    print(f"thread sleeping for {t} seconds...")
+
     time.sleep(t)
-    print(f"thread just slept for {time} seconds...")
 
     return t
 
@@ -79,4 +225,4 @@ def log_file_writer():
     return logging.basicConfig(filename='twitter_log_error_logs.log',
                                format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
                                datefmt='%Y-%m-%d:%H:%M:%S',
-                               level=logging.DEBUG)
+                               level=logging.ERROR)
