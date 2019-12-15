@@ -86,6 +86,6 @@ while 1:
         #mention_replier_1.custom_replier()
         hashtag_twtr.tweet_sender()
 
-        t = randint(10800, 22320)
-
-        time.sleep(t)  # sleep for 3 - 6.2 hours and start the loop again
+        # t = randint(10800, 22320)
+        #
+        # time.sleep(t)  # sleep for 3 - 6.2 hours and start the loop again
