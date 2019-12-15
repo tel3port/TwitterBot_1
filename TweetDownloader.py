@@ -20,6 +20,7 @@ class TwitDloader:
             tweets_csv = open(self.hashtag_tweet_csv, self.action)
             csv_writer = csv.writer(tweets_csv)
 
+            print("hashtag downloading on: ", self.hash_tag)
             for single_tweet in tweepy.Cursor(gls.api.search, q=self.hash_tag, rpp=self.count_num, lang=self.language,
                                               since=self.from_date).items(1000):
                 print(single_tweet.id_str)

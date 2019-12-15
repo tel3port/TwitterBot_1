@@ -39,7 +39,7 @@ class TwitReplier:
         print("len of (TwitReplier) handle list: ", len(self.screen_name_list))
         print("len of (TwitReplier) twit id list: ", len(self.tweet_id_list))
 
-    def screen_name_follower(self):
+    def single_tweet_replier(self):
         print("starting screen_name_follower()")
 
         gls.log_file_writer()
@@ -48,14 +48,14 @@ class TwitReplier:
             for i in range(len(self.screen_name_list)):
                 gls.api.update_status(status=f"@{self.screen_name_list[i]}  {self.custom_tweet_list[randint(0, len(self.custom_tweet_list) - 1)]}", in_reply_to_status_id=self.tweet_id_list[i][:-1])
                 time_slept = gls.sleep_time()
-
-                del (self.screen_name_list[i])
-                del (self.custom_tweet_list[i])
-
-                print(f'index - {i} len - {len(self.screen_name_list)}')
-
-                if i == gls.random_num or len(self.screen_name_list) < gls.random_num:
-                    break
+                #
+                # del (self.screen_name_list[i])
+                # del (self.custom_tweet_list[i])
+                #
+                # print(f'index - {i} len - {len(self.screen_name_list)}')
+                #
+                # if i == gls.random_num or len(self.screen_name_list) < gls.random_num:
+                #     break
 
         except tweepy.TweepError as e:
             logging.error('Error occurred ' + str(e))

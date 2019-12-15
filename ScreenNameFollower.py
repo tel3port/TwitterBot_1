@@ -13,6 +13,8 @@ class HandleFollower:
         self.tweets_list_csv = tweets_list_csv
         self.action = action
 
+        screen_name_list_copy = self.screen_name_list
+
     def hashtag_tweet_reader(self):
         gls.log_file_writer()
 
@@ -41,19 +43,19 @@ class HandleFollower:
 
         gls.log_file_writer()
         try:
-            for index in range(len(self.screen_name_list)):
+            for index in range(len(self.screen_name_list)-1):
                 print(f"creating friendship with: {self.screen_name_list[index]}")
 
                 gls.api.create_friendship(screen_name=self.screen_name_list[index])
 
                 time_slept = gls.sleep_time()
-
-                del (self.screen_name_list[index])
-
-                print(f'index - {index} len - {len(self.screen_name_list)}')
-
-                if index == gls.random_num or len(self.screen_name_list) < gls.random_num:
-                    break
+                #
+                # del (self.screen_name_list[index])
+                #
+                # print(f'index - {index} len - {len(self.screen_name_list)}')
+                #
+                # if index == gls.random_num or len(self.screen_name_list) < gls.random_num:
+                #     break
 
         except tweepy.TweepError as e:
             logging.error('Error occurred ' + str(e))

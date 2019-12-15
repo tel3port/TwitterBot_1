@@ -4,8 +4,23 @@ import TestClass as tc
 import globals as gls
 import logging
 import csv
+import tweepy
 
 print("this  module is for testing out scripts and methods and stuff")
+
+def batch_delete(api):
+    print(
+        "You are about to Delete all tweets from the account @%s." % api.verify_credentials().screen_name)
+
+    for status in tweepy.Cursor(api.user_timeline).items():
+        try:
+            api.destroy_status(status.id)
+            print("Deleted:", status.id)
+        except:
+            print("Failed to delete:", status.id)
+
+
+#batch_delete(api)
 
 custom_hashtag_list = []
 

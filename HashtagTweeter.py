@@ -44,13 +44,13 @@ class TwitOnHashTag:
                 gls.api.update_status(f'{self.tweets_list[i]} {gls.random_hashtag()}')
 
                 time_slept = gls.sleep_time()
-
-                del (self.tweets_list[i])
-
-                print(f'index - {i} len - {len(self.tweets_list)}')
-
-                if i == gls.random_num or len(self.tweets_list) < gls.random_num:
-                    break
+                #
+                # del (self.tweets_list[i])
+                #
+                # print(f'index - {i} len - {len(self.tweets_list)}')
+                #
+                # if i == gls.random_num or len(self.tweets_list) < gls.random_num:
+                #     break
 
         except tweepy.TweepError as e:
             logging.error('Error occurred ' + str(e))

@@ -15,6 +15,7 @@ class DMSlider:
 
     # this loop gets a list of everyone i follow
     def follower_extractor(self):
+        print(" follower_extractor() starting...")
         gls.log_file_writer()
         try:
             for single_follower in tweepy.Cursor(gls.api.followers, screen_name=self.screen_name).items():
@@ -22,7 +23,7 @@ class DMSlider:
                 self.screen_name_list.append(single_follower.screen_name)
                 self.follower_id_list.append(single_follower.id)
 
-                gls.sleep_time()
+               # gls.sleep_time()
 
         except tweepy.TweepError as e:
             logging.error('Error occurred ' + str(e))
@@ -45,13 +46,13 @@ class DMSlider:
 
                 gls.sleep_time()
 
-                del (self.screen_name_list[i])
-                del (self.follower_id_list[i])
-
-                print(f'index - {i} len - {len(self.screen_name_list)}')
-
-                if i == gls.random_num or len(self.screen_name_list) < gls.random_num:
-                    break
+                # del (self.screen_name_list[i])
+                # del (self.follower_id_list[i])
+                #
+                # print(f'index - {i} len - {len(self.screen_name_list)}')
+                #
+                # if i == gls.random_num or len(self.screen_name_list) < gls.random_num:
+                #     break
 
         except tweepy.TweepError as e:
             logging.error('Error occurred ' + str(e))

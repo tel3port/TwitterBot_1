@@ -22,27 +22,10 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 random_num = randint(1, 5)
 
-# def batch_delete(api):
-#     print(
-#         "You are about to Delete all tweets from the account @%s." % api.verify_credentials().screen_name)
-#
-#     for status in tweepy.Cursor(api.user_timeline).items():
-#         try:
-#             api.destroy_status(status.id)
-#             print
-#             "Deleted:", status.id
-#         except:
-#             print
-#             "Failed to delete:", status.id
-#
-#
-# if __name__ == "__main__":
-#     "Authenticated as: %s" % api.me().screen_name
-#
-#     batch_delete(api)
-#
-#
-# batch_delete(api)
+
+
+
+
 # todo load up the hashtag list 50 for NZ
 def random_hashtag():
     hashtag_list = ["#mondaymotivation",
@@ -147,10 +130,12 @@ def random_hashtag():
                     "#CriticalRole",
                     "#Supernatural",
                     "#LOVETHESTAGS",
-                    "#kiwi"
+                    "#kiwi",
+                    "#FreebieFriday",
+                    "#MondayMorning",
+                    "#interesting"
                     ]
 
-    hashtag_list = ["#FreebieFriday", "#MondayMorning","#interesting"]
     random_index = randint(0, len(hashtag_list)-1)
     return hashtag_list[random_index]
 

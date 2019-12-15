@@ -74,38 +74,18 @@ while 1:
         dm_1.follower_extractor()
 
         # reply to all mentions and adds the given hashtag
-        mention_replier_1 = MentionsRepr(value_holder_file=gls.value_holder_file, hash_tag=gls.random_hashtag(),custom_message_list=custom_joke_list)
+       # mention_replier_1 = MentionsRepr(value_holder_file=gls.value_holder_file, hash_tag=gls.random_hashtag(),custom_message_list=custom_joke_list)
 
         # tweet on a given hashtag
         hashtag_twtr = TwitOnHashTag(tweet_list_csv=gls.tweets_for_today, action=gls.write, tweets_list=[],hashtag=gls.random_hashtag())
         hashtag_twtr.tweet_reader()
 
-        while 1:
-            current_handle_num = handle_follower.twitter_user_follower()
-            current_screen_name_num = twt_replier.screen_name_follower()
-            current_follower_num = dm_1.follower_looper()
-            mention_replier_1.custom_replier()
-            current_tweet_num = hashtag_twtr.tweet_sender()
+        handle_follower.twitter_user_follower()
+        twt_replier.single_tweet_replier()
+        dm_1.follower_looper()
+        #mention_replier_1.custom_replier()
+        hashtag_twtr.tweet_sender()
 
-            #todo uncomment this after testing
-            # if current_handle_num < 10:
-            #     break
+        t = randint(10800, 22320)
 
-            break
-
-        # todo delete all this to make the loop essentially run infinitely
-        loop_num += 1
-        if loop_num == 3:
-            break
-        # clear the lists  and hashtag.csv, wait a while and start the loop again
-        # custom_facts_list.clear()
-        # custom_joke_list.clear()
-        # custom_thnx_list.clear()
-        #
-        # f = open(gls.hashtag_tweet_csv, "w+")
-        # f.truncate()
-        # f.close()
-        # gls.sleep_time()
-
-
-print("finished with the test! Deploy??")
+        time.sleep(t)  # sleep for 3 - 6.2 hours and start the loop again
