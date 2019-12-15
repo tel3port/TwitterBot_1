@@ -22,11 +22,9 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 random_num = randint(1, 5)
 
-
-
-
-
 # todo load up the hashtag list 50 for NZ
+
+
 def random_hashtag():
     hashtag_list = ["#mondaymotivation",
                     "#newzealand",
