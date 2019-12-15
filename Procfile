@@ -1,1 +1,1 @@
-worker: MainScript.py
+worker: python MainScript.py
