@@ -1,6 +1,6 @@
 git+https://github.com/tel3port/TwitterBot_1
-python 3.8.0
+python==3.8.0
 pip3
-tweepy 3.8.0
+tweepy==3.8.0
 
 
